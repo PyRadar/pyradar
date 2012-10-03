@@ -58,7 +58,8 @@ class BaseImageComparator(object):
         dimensions_img1 = image1.shape
         dimensions_img2 = image2.shape
         if not (len(dimensions_img1) == len(dimensions_img2) == 2):
-            msg = "WRONG IMAGE DIMENSIONS: only images with one layer accepted."
+            msg = "WRONG IMAGE DIMENSIONS: only images " \
+                  "with one layer accepted."
             raise ComparatorException(msg)
 
         # assert the images to be of the same dimensions
@@ -86,7 +87,8 @@ class BaseImageComparator(object):
                   "dtype."
             raise ComparatorException(msg)
 
-        # if no exception was raised up to this point, both images seem to be OK
+        # if no exception was raised up to this point, both
+        # images seem to be OK
         return True
 
 
@@ -171,8 +173,8 @@ class ImageComparator(BaseImageComparator):
                 }
 
         if strategy not in functions_dict.keys():
-            raise ComparatorException("Strategy not available. "\
-                            "Available strategies are: %s" % \
+            raise ComparatorException("Strategy not available. "
+                            "Available strategies are: %s" %
                             (", ".join(functions_dict.keys())), )
 
         f = functions_dict[strategy]

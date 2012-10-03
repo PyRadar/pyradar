@@ -23,9 +23,9 @@ xoff = geoinfo['xoff']
 yoff = geoinfo['yoff']
 
 # window size in coord x
-win_xsize = 512
+win_xsize = 128
 # window size in coord y
-win_ysize = 512
+win_ysize = 128
 
 image = read_image_from_band(band, xoff, yoff, win_xsize, win_ysize)
 

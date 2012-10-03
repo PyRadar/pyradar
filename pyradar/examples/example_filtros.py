@@ -2,7 +2,7 @@
 from pyradar.filters.frost import frost_filter
 from pyradar.filters.kuan import kuan_filter
 from pyradar.filters.lee import lee_filter
-from pyradar.filters.lee_enhanced_filter import lee_enhanced_filter
+from pyradar.filters.lee_enhanced import lee_enhanced_filter
 from pyradar.filters.median import median_filter
 from pyradar.filters.mean import mean_filter
 
