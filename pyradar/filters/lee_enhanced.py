@@ -11,7 +11,8 @@ CU_DEFAULT = 0.523
 CMAX_DEFAULT = 1.73
 
 
-def weighting(pix_value, window, k=K_DEFAULT, cu=CU_DEFAULT, cmax=CMAX_DEFAULT):
+def weighting(pix_value, window, k=K_DEFAULT,
+              cu=CU_DEFAULT, cmax=CMAX_DEFAULT):
     """
     Computes the weighthing function for Lee filter using cu as the noise
     coefficient.
@@ -96,7 +97,8 @@ def lee_enhanced_filter(img, win_size=3, k=K_DEFAULT, cu=CU_DEFAULT,
             new_pix_value = (window_mean * w_t) + (pix_value * (1.0 - w_t))
 
             assert new_pix_value >= 0.0, \
-                    "ERROR: lee_enhanced_filter(), pix filter can't be negative"
+                    "ERROR: lee_enhanced_filter(), pix " \
+                    "filter can't be negative"
 
             img_filtered[i, j] = round(new_pix_value)
 
