@@ -16,7 +16,7 @@ k_value2 = 1.0
 # coefficient of variation of noise
 cu_value = 0.25
 # coefficient of variation for lee enhanced of noise
-cu_lee_enchanced = 0.523
+cu_lee_enhanced = 0.523
 # max coefficient of variation for lee enhanced
 cmax_value = 1.73
 
@@ -28,7 +28,7 @@ image_kuan = kuan_filter(image, win_size=winsize, cu=cu_value)
 image_lee = lee_filter(image, win_size=winsize, cu=cu_value)
 # lee enhanced filter
 image_lee_enhanced = lee_enhanced_filter(image, win_size=winsize, k=k_value2,
-                                         cu=cu_lee_enchanced, cmax=cmax_value)
+                                         cu=cu_lee_enhanced, cmax=cmax_value)
 # mean filter
 image_mean = mean_filter(image, win_size=winsize)
 # median filter
