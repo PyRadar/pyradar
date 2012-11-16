@@ -5,6 +5,13 @@ PyRadar official GIT repository.
 
 ## Esta documentación está en construcción. Agradeceremos la paciencia (y bug reports y colaboración :) ).
 
+Contact Information
+
+Mail the authors!
+	* Herranz, Matías <matiasherranz@gmail.com>
+	* Tita, Joaquín <joaquintita@gmail.com>
+
+
 ## Módulos de PyRadar
 
 ### *core*, manejo de imágenes SAR y algoritmos de ecualización 
