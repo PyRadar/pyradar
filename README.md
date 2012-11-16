@@ -3,6 +3,8 @@ pyradar
 
 PyRadar official GIT repository.
 
+## Esta documentación está en construcción. Agradeceremos la paciencia (y bug reports y colaboración :) ).
+
 ## Módulos de PyRadar
 
 ### *core*, manejo de imágenes SAR y algoritmos de ecualización 
