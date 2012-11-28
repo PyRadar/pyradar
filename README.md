@@ -85,38 +85,33 @@ Las funciones que contiene este módulo son:
 
 ### Ejemplo de uso:
 
-[source:pasosbasicosdelectura]
-
 Este es el procedimiento estándar para *abrir*, *leer* y *guardar* una
 imagen SAR utilizando PyRadar. A continuación, en los ejemplos de los
 demás módulos, omitiremos estos pasos y haremos referencia a los mismos
-como “*pasos básicos de lectura*” desde los *imports* hasta (inclusive)
-la llamada del procedimiento “*read\_image\_from\_band*”. El siguiente
-ejemplo ilustra como utilizar “*naive\_equalize\_image*”. Para ello se
+como "pasos básicos de lectura" desde los *imports* hasta (inclusive)
+la llamada del procedimiento "read_image_from_band". El siguiente
+ejemplo ilustra como utilizar "naive_equalize_image". Para ello se
 deben seguir los “*pasos básicos de lectura*”, y luego agregar el
 siguiente código:
 
-capitulo4/pyradar~m~odules/example~c~ore2.py
+capitulo4/pyradar_modules/example_core2.py
 
-[^1]: **Gdal** es una librería para leer y escribir datos provenientes
-    de rasters geoespaciales, y está liberada bajo *licencia MIT* por la
-    *Open Source Geospatial Foundation*.
+ **Gdal** es una librería para leer y escribir datos provenientes de rasters 
+ geoespaciales, y está liberada bajo *licencia MIT* por la 
+ *Open Source Geospatial Foundation*.
 
 
 ### *filters*, filtros de ruido
 
 En este módulo se encuentran los siguientes filtros de ruido speckle:
 
--   Frost
-
--   Kuan
-
--   Lee
-
--   Lee Mejorado
+- Frost
+- Kuan
+- Lee
+- Lee Mejorado
 
 Los mismos siguen las definiciones matemáticas de la
-sección [sec:filtros]. Además, se encuentran también las
+sección *filtros*. Además, se encuentran también las
 implementaciones de los filtros clásicos de media y de mediana. Como
 *PyRadar* tiene entre sus objetivos seguir expandiéndose y creciendo,
 este módulo puede ser extendido con nuevos filtros.
@@ -129,49 +124,44 @@ condiciones en sus algoritmos para verificar consistencia.
 
 A continuación se detallan las funciones del módulo:
 
-(1,0)250
+- frost_filter(img, damping_factor, win_size)
+ Esta función implementa el filtro de Frost sobre una imagen *img*, 
+ tomando como argumentos el *damping_factor* y el tamaño de ventana 
+ *win_size*. Si estos argumentos no fueran especificados, se toma por defecto:
+  * *damping_factor=2.0*
+  * *win_size=3*.
 
--   /frost~f~ilter(img, damping~f~actor, win~s~ize)/ Esta función
-    implementa el filtro de Frost sobre una imagen *img*, tomando como
-    argumentos el *damping\_factor* y el tamaño de ventana *win\_size*.
-    Si estos argumentos no fueran especificados, se toma por defecto:
-    *damping\_factor=2.0* y *win\_size=3*.
-
--   /kuan~f~ilter(img, win~s~ize, cu)/ Esta función aplica el filtro de
+- kuan_filter(img, win_size, cu) Esta función aplica el filtro de
     Kuan sobre una imagen *img* tomando como argumentos el tamaño de
-    ventana *win\_size* y coeficiente de variación del ruido *cu*. De no
+    ventana *win_size* y coeficiente de variación del ruido *cu*. De no
     ser especificados los siguientes valores se toman por defecto:
-    *win\_size=3* y *cu=0.25*
+    *win_size=3* y *cu=0.25*
 
--   /def lee~f~ilter(img, win~s~ize, cu)/ Esta función aplica el filtro
+- lee_filter(img, win_size, cu) Esta función aplica el filtro
     de Lee sobre una imagen *img*, tomando como argumentos el tamaño de
-    ventana *win\_size* y coeficiente de variación del ruido *cu*. De no
+    ventana *win_size* y coeficiente de variación del ruido *cu*. De no
     ser especificados, se toman los mismos valores por defecto que en el
     filtro de Kuan.
 
--   /lee~e~nhanced~f~ilter(img, win~s~ize, k, cu, cmax)/ Esta función
-    aplica el filtro de Lee Mejorado con los siguientes argumentos:
+- lee_enhanced_filter(img, win_size, k, cu, cmax) 
+  Esta función aplica el filtro de Lee Mejorado con los siguientes argumentos:
 
     -   la imagen *img*,
-
-    -   el tamaño *win\_size* (por defecto 3),
-
+    -   el tamaño *win_size* (por defecto 3),
     -   *k* el factor de amortiguamiento (por defecto 1.0),
-
     -   coeficiente de variación del ruido *cu* (por defecto 0.523),
-
     -   coeficiente de variación máximo en la imagen *cmax* (por defecto
         1.73).
 
--   /mean~f~ilter(img, win~s~ize)/ Esta función ejecuta un *filtro de
+- mean_filter(img, win_size) Esta función ejecuta un *filtro de
     paso bajo clásico*, como lo es el filtro de media. Los argumentos
-    que toma son la imagen *img* y el tamaño de la ventana *win\_size*.
-    Por defecto *win\_size* toma el valor de $3$.
+    que toma son la imagen *img* y el tamaño de la ventana *win_size*.
+    Por defecto *win_size* toma el valor de 3.
 
--   /median~f~ilter(img, win~s~ize)/ Esta función ejecuta el segundo
+- median_filter(img, win_size) Esta función ejecuta el segundo
     *filtro de paso bajo clásico* que contiene el módulo: el *filtro de
     mediana*. Los argumentos de este filtro son la imagen *img* y el
-    tamaño de ventana *win\_size*, tomando por defecto $3$ para este
+    tamaño de ventana *win_size*, tomando por defecto 3 para este
     último.
 
 ### Funciones desarrolladas para verificar consistencia de los filtros en tiempo de ejecución
