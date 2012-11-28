@@ -166,39 +166,35 @@ A continuación se detallan las funciones del módulo:
 
 ### Funciones desarrolladas para verificar consistencia de los filtros en tiempo de ejecución
 
--   /assert~w~indow~s~ize(win~s~ize)/ Verifica que el tamaño de ventana
-    sea múltiplo de $3$ y positivo. De no cumplirse la condición,
+- assert_window_size(win_size) Verifica que el tamaño de ventana
+    sea múltiplo de 3 y positivo. De no cumplirse la condición,
     levanta una excepción de Python.
 
--   /assert~i~ndices~i~n~r~ange(width, height, xleft, xright, yup,
-    ydown)/ Verifica que los índices de la ventana deslizante se
+- assert_indices_in_range(width, height, xleft, xright, yup,
+    ydown) Verifica que los índices de la ventana deslizante se
     encuentren dentro de los valores normales.
 
-    Es decir, que siempre se cumpla lo siguiente:
-
-    $$\begin{aligned}
-                           (0 \leq xleft \wedge xright \leq width \wedge 0 \leq yup \wedge ydown \leq height)
-                    \end{aligned}$$
-
-    De no ser cierta la *expresión booleana* anterior, se levanta una
-    excepción de Python.
+  Es decir, que siempre se cumpla lo siguiente:
+  (0 <= xleft and xright <= width and 0 <= yup and ydown <= height)
+  
+  De no ser cierta la *expresión booleana* anterior, se levanta una 
+  excepción de Python.
 
 ### Ejemplo de uso de los filtros:
 
 Para correr los algoritmos de los filtros antes mencionados se necesitan
-ejecutar los “*pasos básicos de lectura*”, para tener así la imagen
+ejecutar los "pasos básicos de lectura", para tener así la imagen
 *img* a usar en la variable “image”.
-capitulo4/pyradar~m~odules/example~f~iltros.py
 
 
 ### *utils*, es un módulo en que se agrupan utilidades y herramientas generales
 
 ### *timer*, un pequeño timer para cronometrar el tiempo de ejecución de porciones de código Python
 
-Se desarrolló este pequeño módulo con el fin de cronometrar el “tiempo
-de pared” de ejecución de algunas funciones. El tiempo de pared de
-ejecución es el tiempo total que un cálculo permanece en ejecución.\
-Se le llama de “pared” porque dentro del sistema operativo la ejecución
+Se desarrolló este pequeño módulo con el fin de cronometrar el "tiempo
+de pared" de ejecución de algunas funciones. El tiempo de pared de
+ejecución es el tiempo total que un cálculo permanece en ejecución.
+Se le llama de "pared" porque dentro del sistema operativo la ejecución
 de un proceso también acarrea otra operaciones básicas además de la
 algoritmia programada. Operaciones como cambios de contexto del sistema
 operativo, carga y descarga de librerías, volcados de datos a disco y
@@ -217,17 +213,17 @@ El propósito de este módulo de PyRadar es agrupar funcionalidades y
 herramientas para realizar tareas de debugging sobre algoritmos que
 manipulen imágenes SAR. De esta forma, el módulo irá satisfaciendo las
 necesidades de la comunidad con nuevos features. De momento sólo posee
-una función, *take\_snapshot()*.
+una función, *take_snapshot()*.
 
--   /def take~s~napshot(img)/es una función que toma una *fotografía
-    instantánea* de la imagen *img* y la guarda en el disco. El
-    propósito de esta función, es poder exportar capturas de los
-    algoritmos de clasificación a medida que van evolucionando en el
-    cómputo.
+- takesnapshot(img)/es una función que toma una *fotografía
+  instantánea* de la imagen *img* y la guarda en el disco. El
+  propósito de esta función, es poder exportar capturas de los
+  algoritmos de clasificación a medida que van evolucionando en el
+  cómputo.
 
 ### Ejemplo de uso:
 
-### *system\_info*, obtiene información del Sistema Operativo, Hardware y Software
+### *system_info*, obtiene información del Sistema Operativo, Hardware y Software
 
 Se desarrolló un módulo que permite obtener información del Sistema
 Operativo de manera simple y detallada. El objetivo de este módulo es
@@ -246,20 +242,21 @@ más allá del contexto específico de la librería. Al igual que el módulo
 *Sar Debugger*, su objetivo también es ser extendido por la comunidad a
 medida que la necesidad lo demande.
 
--   /def compute~c~fs()/ Recibiendo como argumento un histograma
-    generado con la librería *numpy*, esta función genera una tabla con
-    todas las frecuencias acumuladas.
+- compute_cfs() Recibiendo como argumento un histograma
+  generado con la librería *numpy*, esta función genera una tabla con
+  todas las frecuencias acumuladas.
 
--   /def calculate~p~df~f~or~p~ixel()/ Calcula la probabilidad de que un
-    valor en particular aparezca en la imagen, donde la probabilidad
-    está dada como: la cantidad de ocurrencias efectivas del
-    valorcantidad total de elementos.
+- calculate_pdf_for_pixel() Calcula la probabilidad de que un
+  valor en particular aparezca en la imagen, donde la probabilidad
+  está dada como: la cantidad de ocurrencias efectivas del
+  valor * cantidad total de elementos.
 
--   /def calculate~c~df~f~or~p~ixel()/ Calcula el valor de un pixel en
-    la función distribución acumulada.
+- calculate_cdf_for_pixel() Calcula el valor de un pixel en
+  la función distribución acumulada.
 
--   /def compute~c~dfs()/ Esta función computa todas la probabilidades
-    de la distribución de frecuencia acumulada de cada valor en la
-    imagen.
+- compute_cdfs() Esta función computa todas la probabilidades
+  de la distribución de frecuencia acumulada de cada valor en la
+  imagen.
 
 ### Ejemplos de uso:
+- faltan
