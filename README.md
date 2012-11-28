@@ -8,14 +8,13 @@ PyRadar official GIT repository.
 # Contact Information
 
 Mail the authors!
-
-	* Herranz, Matías <matiasherranz@gmail.com>
-	* Tita, Joaquín <joaquintita@gmail.com>
+  *  Herranz, Matías <matiasherranz@gmail.com>
+  *  Tita, Joaquín <joaquintita@gmail.com>
 
 
 ## Módulos de PyRadar
 
-### *core*, manejo de imágenes SAR y algoritmos de ecualización 
+### **core**, manejo de imágenes SAR y algoritmos de ecualización 
 
 Este módulo permite el manejo de imágenes SAR y además posee algoritmos
 para su ecualización.
@@ -23,67 +22,66 @@ para su ecualización.
 
 Las funciones que contiene este módulo son:
 
--   /create_dataset_from_path(image_path)/ Desde el path de una
-    imagen SAR, crea una estructura de datos, un *dataset*, para manejar
+-   create_dataset_from_path(image_path) Desde el path de una
+    imagen SAR, crea una estructura de datos, un **dataset**, para manejar
     su información. Esta estructura de datos, proviene de una librería
-    externa llamada *Gdal*[^1].
+    externa llamada **Gdal**.
 
--   /get_band_from_dataset(dataset)/ Obtiene la única banda de
-    utilidad a nuestros fines del “*dataset*” pasado como argumento. Es
+-   get_band_from_dataset(dataset) Obtiene la única banda de
+    utilidad a nuestros fines del "dataset" pasado como argumento. Es
     importante notar que las imágenes que utilizamos poseen sólo una
     banda, dado que son imágenes de radar, en blanco y negro.
 
--   /get_band_min_max(band)/ Retorna una tupla de *Python* con el
-    máximo y mínimo de la banda “*band*”.
+-   get_band_min_max(band) Retorna una tupla de **Python** con el
+    máximo y mínimo de la banda "band".
 
--   /read_image_from_band(band, xoff, yoff, win_xsize, win_ysize)/
-    Lee la banda convirtiéndola en un arreglo bidimensional(o *matriz*)
-    de *numpy*, facilitando así el manejo de la información en un
+-   read_image_from_band(band, xoff, yoff, win_xsize, win_ysize)
+    Lee la banda convirtiéndola en un arreglo bidimensional(o **matriz**)
+    de **numpy**, facilitando así el manejo de la información en un
     formato simple y más natural de manejar.
 
     Los parámetros significan lo siguiente:
 
-    -   “*xoff*”, “*yoff*”, indican con qué *offset* sobre el eje $x$ y
-        el eje $y$ se deben leer los datos desde la imagen,
+    -   "xoff", "yoff", indican con qué **offset** sobre el eje x y
+        el eje y se deben leer los datos desde la imagen,
 
-    -   “*win\_xsize*”, “*win\_ysize*”, indican el tamaño de la ventana
-        a leer de la imagen en *largo* y *ancho*.
+    -   "win_xsize", "win_ysize", indican el tamaño de la ventana
+        a leer de la imagen en **largo** y **ancho**.
 
--   /get_geoinfo(dataset, cast_to_int)/ Esta función extrae la
-    información de georreferenciación de un “*dataset*”, con
-    “*cast\_to\_int*” indicando si los datos de georreferenciación se
+-   get_geoinfo(dataset, cast_to_int) Esta función extrae la
+    información de georreferenciación de un "dataset", con
+    "cast_to_int" indicando si los datos de georreferenciación se
     encuentran como *strings* o como *números crudos*.
-
-    De momento, no es utilizada por ninguno de los algoritmos, pero si
+	De momento, no es utilizada por ninguno de los algoritmos, pero si
     en un futuro se quisiese extender PyRadar con funcionalidades que
     requieran el uso de georreferenciación, la base está preparada.
 
--   /save_image(img_dest_dir, filename, img)/ Esta función se encarga
-    de guardar una imagen “*img*” representada por un arreglo de *numpy*
-    en le directorio \`‘*img\_dest\_dir’*’ con nombre de archivo
-    “*filename*”.
+-   save_image(img_dest_dir, filename, img) Esta función se encarga
+    de guardar una imagen "img" representada por un arreglo de **numpy**
+    en le directorio img_dest_dir con nombre de archivo
+    "filename".
 
-    Es importante destacar que “*img*” debe poseer valores en el rango
-    $[0:255]$ para que el procedimiento resulte exitoso. Si la imagen
+    Es importante destacar que "img" debe poseer valores en el rango
+    [0:255] para que el procedimiento resulte exitoso. Si la imagen
     llegase a poseer valores fuera de este rango, se deberán normalizar
     los valores previamente utilizando los algoritmos de equalización
     provistos por este módulo.
 
--   /equalization_using_histogram(img)/ Esta función normaliza los
-    valores de “*img*” al rango $[0:255]$, utilizando como procedimiento
-    intermedio “*equalize\_histogram*”. Dicho algoritmo está basado en
-    \cite{histogram_eq}.
+-   equalization_using_histogram(img) Esta función normaliza los
+    valores de "img" al rango [0:255], utilizando como procedimiento
+    intermedio "equalize_histogram". Dicho algoritmo está basado en
+    histogram_eq(img).
 
--   /equalize_histogram(img, histogram, cfs)/ Dado el histograma y la
-    función de distribución acumulada de “*img*”, este procedimiento
-    normaliza los valores al rango $[0:255]$. Cabe notar que esta
+-   equalize_histogram(img, histogram, cfs) Dado el histograma y la
+    función de distribución acumulada de "img", este procedimiento
+    normaliza los valores al rango [0:255]. Cabe notar que esta
     función es utilizada internamente por
-    “*equalization\_using\_histogram*”.
+    "equalization_using_histogram".
 
--   /naive_equalize_image(img, input_range, output_range)/ Esta
+-   naive_equalize_image(img, input_range, output_range) Esta
     función es una implementación sencilla y sin optimizaciones que
-    sirve para normalizar imágenes desde el rango “*input\_range*” al
-    rango “*output\_range*”.
+    sirve para normalizar imágenes desde el rango "input_range" al
+    rango "output_range".
 
 ### Ejemplo de uso:
 
