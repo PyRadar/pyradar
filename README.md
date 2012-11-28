@@ -1,5 +1,6 @@
-pyradar
-=======
+#pyradar
+.. image:: https://github.com/PyRadar/pyradar/blob/master/logos/logo1.png
+
 
 PyRadar official GIT repository.
 
@@ -14,7 +15,7 @@ Mail the authors!
 
 ## Módulos de PyRadar
 
-### **core**, manejo de imágenes SAR y algoritmos de ecualización 
+### *core*, manejo de imágenes SAR y algoritmos de ecualización 
 
 Este módulo permite el manejo de imágenes SAR y además posee algoritmos
 para su ecualización.
@@ -25,7 +26,7 @@ Las funciones que contiene este módulo son:
 -   create_dataset_from_path(image_path) Desde el path de una
     imagen SAR, crea una estructura de datos, un **dataset**, para manejar
     su información. Esta estructura de datos, proviene de una librería
-    externa llamada **Gdal**.
+    externa llamada [**Gdal**](http://www.gdal.org/).
 
 -   get_band_from_dataset(dataset) Obtiene la única banda de
     utilidad a nuestros fines del "dataset" pasado como argumento. Es
