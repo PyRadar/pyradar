@@ -28,3 +28,5 @@ pip-log.txt
 .mr.developer.cfg
 _test_output
 _test_images
+.project
+.pydevproject

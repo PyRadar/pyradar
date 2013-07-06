@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 # Copyright 2012 - 2013
-# Matias Herranz <matiasherranz@gmail.com>
-# Joaquin Tita <joaquintita@gmail.com>
+# Matías Herranz <matiasherranz@gmail.com>
+# Joaquín Tita <joaquintita@gmail.com>
 #
 # hhttps://github.com/PyRadar/pyradar
 #
