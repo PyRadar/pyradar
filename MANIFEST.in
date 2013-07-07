@@ -1,0 +1,4 @@
+recursive-include pyradar/pyradar/simulate/ExampleImages *
+recursive-include pyradar/pyradar/simulate/DemoSet *
+include COPIYING
+
