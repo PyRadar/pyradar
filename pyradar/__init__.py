@@ -1,29 +1,28 @@
 #!/usr/bin/env python
--*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
-Copyright 2012 - 2013
-Matías Herranz <matiasherranz@gmail.com>
-Joaquín Tita <joaquintita@gmail.com>
+# Copyright 2012 - 2013
+# Matías Herranz <matiasherranz@gmail.com>
+# Joaquín Tita <joaquintita@gmail.com>
 #
-hhttps://github.com/PyRadar/pyradar
+# hhttps://github.com/PyRadar/pyradar
 #
-This library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 3 of the License, or (at your option) any later version.
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 3 of the License, or (at your option) any later version.
 #
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-Lesser General Public License for more details.
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# Lesser General Public License for more details.
 #
-You should have received a copy of the GNU Lesser General Public
-License along with this library. If not, see <http://www.gnu.org/licenses/>.
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
 """Collection of algortihms and tools for manipulate satellite images
 
 """
-
 
 PRJ = "pyradar"
 
@@ -56,5 +55,15 @@ License along with this library. If not, see <http://www.gnu.org/licenses/>.
 
 """
 
-KEYWORDS = "satellite image sar lee kuan lee-enhanced"
+KEYWORDS = "radar satellite image sar lee kuan lee-enhanced"
+
+
+CLASSIFIERS = (
+    "Programming Language :: Python :: 2",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Scientific/Engineering :: Image Recognition",
+    "Topic :: Utilities",
+)
 
