@@ -13,11 +13,13 @@ Mail the authors!
 Or the colaborator!
   *  Cabral, Juan B. <jbc.develop@gmail.com>
 
-## This is an example of what you can achieve with PyRadar:
-
-[![isodata](https://raw.github.com/PyRadar/pyradar/master/stuff/imgs/isodata.gif)](#isodata)
-
 ### The docs are in readthedocs.org
 Take a look there!
 
+### This is an example of what you can achieve with PyRadar:
 
+Isodata clasification algorithm
+
+[![isodata](https://raw.github.com/PyRadar/pyradar/master/stuff/imgs/isodata.gif)](#isodata)
+
+Video in better quality: http://www.youtube.com/watch?v=4meidkmJWP0
