@@ -15,7 +15,7 @@ Or the colaborator!
 
 ## This is an example of what you can achieve with PyRadar:
 
-<iframe width="560" height="315" src="//www.youtube.com/embed/4meidkmJWP0" frameborder="0" allowfullscreen></iframe>
+[![isodata](https://raw.github.com/PyRadar/pyradar/master/stuff/imgs/isodata.gif)](#isodata)
 
 ### The docs are in readthedocs.org
 Take a look there!
