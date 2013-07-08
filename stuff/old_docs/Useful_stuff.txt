@@ -1,0 +1,11 @@
+###############################################################################
+Managing a Webfaction-hosted GIT repo and its users:
+
+    http://docs.webfaction.com/software/git.html
+
+###############################################################################
+Managing a Webfaction-hosted TRAC and its users:
+
+    http://docs.webfaction.com/software/trac.html
+
+###############################################################################
