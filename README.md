@@ -1,6 +1,6 @@
 #pyradar
 
-[![logo](raw.github.com/PyRadar/pyradar/master/stuff/logos/logo1.png)](#logo)
+[![logo](https://raw.github.com/PyRadar/pyradar/master/stuff/logos/logo1.png)](#logo)
 
 PyRadar official GIT repository.
 
