@@ -5,7 +5,7 @@
 # Matías Herranz <matiasherranz@gmail.com>
 # Joaquín Tita <joaquintita@gmail.com>
 #
-# hhttps://github.com/PyRadar/pyradar
+# https://github.com/PyRadar/pyradar
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -75,7 +75,7 @@ def validate_modules(requires):
         try:
             __import__(name)
         except ImportError:
-            not_found.append("{} requires '{}' ({})".format(yatel.PRJ,
+            not_found.append("{} requires '{}' ({})".format(pyradar.PRJ,
                                                              name, url))
     return not_found
 

@@ -20,6 +20,8 @@ Take a look there!
 
 Isodata clasification algorithm
 
-[![isodata](https://raw.github.com/PyRadar/pyradar/master/stuff/imgs/isodata.gif)](#isodata)
+<img align="CENTER"
+     src="https://raw.github.com/PyRadar/pyradar/master/stuff/imgs/isodata.gif"
+     alt="isodata"/>
 
 Video in better quality: http://www.youtube.com/watch?v=4meidkmJWP0

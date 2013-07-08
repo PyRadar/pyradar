@@ -5,7 +5,7 @@
 # Matías Herranz <matiasherranz@gmail.com>
 # Joaquín Tita <joaquintita@gmail.com>
 #
-# hhttps://github.com/PyRadar/pyradar
+# https://github.com/PyRadar/pyradar
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public

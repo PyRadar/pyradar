@@ -30,3 +30,4 @@ _test_output
 _test_images
 .project
 .pydevproject
+.settings
