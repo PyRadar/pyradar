@@ -31,3 +31,4 @@ _test_images
 .project
 .pydevproject
 .settings
+doc/build
