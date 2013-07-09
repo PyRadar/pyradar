@@ -1,7 +1,7 @@
 Examples
 ========
 
-A several examples of **pyradar**.
+All the examples in one place!
 
 .. include:: _temp/examples.rst
 

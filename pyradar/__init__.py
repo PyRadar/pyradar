@@ -22,6 +22,8 @@
 
 """Collection of algortihms and tools for manipulate satellite images
 
+Full docs: http://pyradar-tools.readthedocs.org/
+
 """
 
 PRJ = "pyradar"
