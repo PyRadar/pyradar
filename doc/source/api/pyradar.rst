@@ -14,11 +14,10 @@ Subpackages
 
 .. toctree::
 
-    pyradar.classifiers
-    pyradar.comparator
     pyradar.core
-    pyradar.examples
+    pyradar.classifiers
     pyradar.filters
+    pyradar.comparator
     pyradar.simulate
     pyradar.utils
 

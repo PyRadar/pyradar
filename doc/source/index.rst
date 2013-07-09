@@ -6,11 +6,18 @@
 Welcome to pyRadar's documentation!
 ===================================
 
+.. image:: _static/splash.png
+    :align: center
+
+:Repo: https://github.com/PyRadar/pyradar
+
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
 
+    install.rst
+    examples.rst
     api/modules.rst
 
 
