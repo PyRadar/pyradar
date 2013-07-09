@@ -52,6 +52,7 @@ PYPI_REQUIRE = [
     "PIL",
     "numpy",
     "matplotlib",
+    "scipy"
 ]
 
 MANUAL_REQUIRE = {
