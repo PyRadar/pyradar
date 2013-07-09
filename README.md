@@ -14,7 +14,8 @@ Or the colaborator!
   *  Cabral, Juan B. <jbc.develop@gmail.com>
 
 ### The docs are in readthedocs.org
-Take a look there!
+
+http://pyradar-tools.readthedocs.org
 
 ### This is an example of what you can achieve with PyRadar:
 
