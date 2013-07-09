@@ -287,7 +287,7 @@ with open(EXAMPLES_RST, "w") as fp:
 # READ THE DOCS PATCH
 #===============================================================================
 
-MOCK_MODULES = ['numpy']
+MOCK_MODULES = ['numpy', 'osgeo', 'scipy', 'pylab' ]
 
 if os.environ.get('READTHEDOCS', None) == 'True':
 
