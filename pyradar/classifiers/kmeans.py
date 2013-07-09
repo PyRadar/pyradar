@@ -31,9 +31,10 @@ ITER_MAX = 100
 
 
 def initial_clusters(img_flat, k, method="random"):
-    """
-    Define initial clusters centers as startup.
+    """Define initial clusters centers as startup.
+
     By default, the method is "linspace". Other method available is "random".
+
     """
     methods_availables = ["linspace", "random"]
 
@@ -52,8 +53,8 @@ def initial_clusters(img_flat, k, method="random"):
 
 
 def update_centers(img_flat, img_class, centers):
-    """
-    Update the cluster centers, computing the mean of all cluster members.
+    """Update the cluster center, computing the mean of all cluster members.
+
     """
     axis = 0
     n_clusters = centers.shape[0]
@@ -67,9 +68,9 @@ def update_centers(img_flat, img_class, centers):
 
 
 def converged_clusters(centers, last_centers, iter):
-    """
-    Stop algorithm if there is no change in the clusters values between each
+    """ Stop algorithm if there is no change in the clusters values between each
     iteration.
+
     Returns:
             - True if should stop, otherwise False.
     """
@@ -77,15 +78,17 @@ def converged_clusters(centers, last_centers, iter):
 
 
 def kmeans_classification(img, k=K_CLASSES, iter_max=ITER_MAX):
-    """
-    Classify a numpy 'image' according K-means algorithm.
+    """Classify a numpy 'image' according K-means algorithm.
+
     Parameters:
             - img: an input numpy array that contains the image to classify.
             - k: number of classes (if not setted will use 5 as default)
             - iter_max: maximum number of iterations (if not setted will use
               100 as default)
+
     Return value:
             - img_class: an numpy array image with the classification.
+
     """
     N, M = img.shape
     img_flat = img.flatten()

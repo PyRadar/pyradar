@@ -281,3 +281,33 @@ for dname, _, fnames in os.walk(os.path.join("..", "..", "examples")):
 
 with open(EXAMPLES_RST, "w") as fp:
     fp.write("\n\n".join(examples))
+
+
+#===============================================================================
+# READ THE DOCS PATCH
+#===============================================================================
+
+MOCK_MODULES = ['numpy']
+
+if os.environ.get('READTHEDOCS', None) == 'True':
+
+    class Mock(object):
+        def __init__(self, *args, **kwargs):
+            pass
+
+        def __call__(self, *args, **kwargs):
+            return Mock()
+
+        @classmethod
+        def __getattr__(cls, name):
+            if name in ('__file__', '__path__'):
+                return '/dev/null'
+            elif name[0] == name[0].upper():
+                mockType = type(name, (), {})
+                mockType.__module__ = __name__
+                return mockType
+            else:
+                return Mock()
+
+    for mod_name in MOCK_MODULES:
+        sys.modules[mod_name] = Mock()
