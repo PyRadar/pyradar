@@ -1,9 +1,12 @@
 Examples
 ========
 
-.. include:: ../../pyradar/examples/example_comparator.py
+.. include:: ../../examples/example_comparator.py
     :literal:
 
+{% for e in [1,2,3] %}
+<a>{{2}}
+{%endfor%}
 
 ``isodata`` working
 -------------------
