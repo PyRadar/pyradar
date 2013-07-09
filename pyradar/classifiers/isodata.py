@@ -28,8 +28,9 @@ from scipy.cluster import vq
 
 
 def initialize_parameters(parameters=None):
-    """ Auxiliar function to set default values to all the parameters not
-        given a value by the user.
+    """Auxiliar function to set default values to all the parameters not
+    given a value by the user.
+
     """
     parameters = {} if not parameters else parameters
 
@@ -70,10 +71,11 @@ def initialize_parameters(parameters=None):
 
 
 def quit_low_change_in_clusters(centers, last_centers, iter):
-    """
-    Stop algorithm by low change in the clusters values between each iteration.
-    Returns:
-            - True if should stop, otherwise False.
+    """Stop algorithm by low change in the clusters values between each
+    iteration.
+
+    :returns: True if should stop, otherwise False.
+
     """
     quit = False
     if centers.shape == last_centers.shape:

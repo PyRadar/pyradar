@@ -25,4 +25,7 @@
 
 All the files inside this folder are lgpl3 licensed
 
+if you add a python file inside this folder then is automatically added to
+documentation
+
 """
