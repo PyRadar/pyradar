@@ -288,7 +288,7 @@ with open(EXAMPLES_RST, "w") as fp:
 #===============================================================================
 
 MOCK_MODULES = ['numpy', 'osgeo', 'scipy', 'pylab',
-                'scipy,stats', 'scipy.cluster' ]
+                'scipy.stats', 'scipy.cluster', 'scipy.cluster.vq' ]
 
 if os.environ.get('READTHEDOCS', None) == 'True':
 
