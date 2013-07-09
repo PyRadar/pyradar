@@ -249,3 +249,35 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+
+#===============================================================================
+# CREATE SOME DINAMIC SOURCES
+#===============================================================================
+import shutil
+
+TEMP_SOURCES = os.path.join(".", "_temp")
+
+if os.path.exists(TEMP_SOURCES):
+    shutil.rmtree(TEMP_SOURCES)
+os.makedirs(TEMP_SOURCES)
+
+EXAMPLES_RST = os.path.join(TEMP_SOURCES, "examples.rst")
+examples = []
+for dname, _, fnames in os.walk(os.path.join("..", "..", "examples")):
+    for fname in fnames:
+        if fname.startswith("_") or not fname.endswith(".py"):
+            continue
+        fname_cleaned = fname.split("_", 1)[1].rsplit(".", 1)[0]
+        title = "Example of **{}**".format(fname_cleaned)
+        underline = "-" * len(title)
+        path = os.path.join(dname, fname)
+        ex = ("{title}\n"
+              "{underline}\n\n"
+              ".. include:: {path}\n"
+              "    :literal:").format(title=title, underline=underline,
+                                      path=path)
+        examples.append(ex)
+    break
+
+with open(EXAMPLES_RST, "w") as fp:
+    fp.write("\n\n".join(examples))

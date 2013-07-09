@@ -32,3 +32,4 @@ _test_images
 .pydevproject
 .settings
 doc/build
+doc/sources/_temp
