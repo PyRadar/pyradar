@@ -17,6 +17,7 @@ Contents:
     :maxdepth: 2
 
     install.rst
+    tutorial.rst
     examples.rst
     api/modules.rst
 
