@@ -2,183 +2,174 @@
 Tutorial
 ========
 
-Entendiendo los módulos de PyRadar
-----------------------------------
+Understanding PyRadar's modules
+-------------------------------
 
 
 - ``pyradar.core``
 
-    Este módulo permite el manejo de imágenes SAR y además posee algoritmos
-    para su ecualización.
+    This module deals with SAR images and also contains equalization
+    algorithms.
 
-    Las funciones que contiene este módulo son:
+    This module contains the following functions:
 
-    - ``create_dataset_from_path(image_path)`` Desde el path de una imagen SAR,
-      crea una estructura de datos, un dataset, para manejar su información.
-      Esta estructura de datos, proviene de una librería externa llamada Gdal.
+    - ``create_dataset_from_path(image_path)`` from the path to a SAR
+      image, it creates a data structure (a dataset) to manage the
+      image's information. This data structure is defined in an
+      external library (Gdal).
 
-    - ``get_band_from_dataset(dataset)`` Obtiene la única banda de utilidad a
-      nuestros fines del "dataset" pasado como argumento. Es importante notar
-      que las imágenes que utilizamos poseen sólo una banda, dado que son
-      imágenes de radar, en blanco y negro.
+    - ``get_band_from_dataset(dataset)`` extracts the only usable band
+      (for our purposes) from the dataset passed as parameter. NB: we
+      are dealing only with images which can contain only one band, as
+      radar images are black and white.
 
-    - ``get_band_min_max(band)`` Retorna una tupla de Python con el máximo y
-      mínimo de la banda "band".
+    - ``get_band_min_max(band)`` returns a Python tuple with the
+      maximum and minimum values for the band passed as parameter.
 
-    - ``read_image_from_band(band, xoff, yoff, win_xsize, win_ysize)`` Lee la
-      banda convirtiéndola en un arreglo bidimensional(o matriz) de numpy,
-      facilitando así el manejo de la información en un formato simple y más
-      natural de manejar.
+    - ``read_image_from_band(band, xoff, yoff, win_xsize, win_ysize)``
+      reads the band into numpy's bidirectional array (or matrix), a
+      simpler and more natural format.
 
-      Los parámetros significan lo siguiente:
+      The meaning of the different parameters is as follows:
 
-        - *xoff* y *yoff*: ndican con qué offset sobre el eje x y el eje y se deben leer los datos desde la imagen.
-        - *win_xsize* y *win_ysize*: indican el tamaño de la ventana a leer de la imagen en largo y ancho.
+        - *xoff* and *yoff*: offset over the x and y axis where the
+          image data should start being read.
 
-    - ``get_geoinfo(dataset, cast_to_int)`` Esta función extrae la información
-      de georreferenciación de un "dataset", con "cast_to_int" indicando si los
-      datos de georreferenciación se encuentran como strings o como números
-      crudos. De momento, no es utilizada por ninguno de los algoritmos, pero
-      si en un futuro se quisiese extender PyRadar con funcionalidades que
-      requieran el uso de georreferenciación, la base está preparada.
+        - *win_xsize* y *win_ysize*: window size in height and width.
 
-    - ``save_image(img_dest_dir, filename, img)`` Esta función se encarga de
-      guardar una imagen "img" representada por un arreglo de numpy en le
-      directorio *img_dest_dir* con nombre de archivo *filename*.
+    - ``get_geoinfo(dataset, cast_to_int)`` extract the georeferencing
+      information from the dataset. "cast_to_int" implies whether the
+      georeferencing data are represented as strings or raw
+      numbers. For the time being, it is not employed by any of the
+      other algorithms, but it could be useful to extend PyRadar with
+      georeferencing functionality.
 
-      Es importante destacar que *img* debe poseer valores en el rango
-      *[0:255]* para que el procedimiento resulte exitoso. Si la imagen
-      llegase a poseer valores fuera de este rango, se deberán normalizar los
-      valores previamente utilizando los algoritmos de equalización provistos
-      por este módulo.
+    - ``save_image(img_dest_dir, filename, img)`` saves an image in
+      numpy array format to the folder *img_dest_dir* with file name
+      *filename*.
 
-    - ``equalization_using_histogram(img)`` Esta función normaliza los valores
-      de *img* al rango *[0:255]*, utilizando como procedimiento intermedio
-      *equalize_histogram*. Dicho algoritmo está basado en histogram_eq(img).
+      NB: *img* should have values in the range *[0:255]*. Outside
+      that range, the values should be normalized using the
+      equalization algorithms in the same module.
 
-    - ``equalize_histogram(img, histogram, cfs)`` Dado el histograma y la
-      función de distribución acumulada de *img*, este procedimiento normaliza
-      los valores al rango *[0:255]*. Cabe notar que esta función es utilizada
-      internamente por *equalization_using_histogram*.
+    - ``equalization_using_histogram(img)`` normalizes the values in
+      *img* to the range *[0:255]*, using the function
+      *equalize_histogram* (which in turn uses histogram_eq(img)).
 
-    - ``naive_equalize_image(img, input_range, output_range)`` Esta función
-      es una implementación sencilla y sin optimizaciones que sirve para
-      normalizar imágenes desde el rango *input_range* al rango *output_range*.
+    - ``equalize_histogram(img, histogram, cfs)`` given both the
+      histogram and CDF for *img*, normalize its values to the range
+      *[0:255]* (using *equalization_using_histogram*).
 
-    Ejemplo de uso:
+    - ``naive_equalize_image(img, input_range, output_range)`` a
+      simple and straightforward normalization from range
+      *input_range* to the range *output_range*.
+
+    Example of use:
     ---------------
 
-    Este es el procedimiento estándar para abrir, leer y guardar una imagen SAR
-    utilizando PyRadar. A continuación, en los ejemplos de los demás módulos,
-    omitiremos estos pasos y haremos referencia a los mismos como
-    "pasos básicos de lectura" desde los imports hasta (inclusive) la llamada
-    del procedimiento "read_image_from_band". El siguiente ejemplo ilustra como
-    utilizar "naive_equalize_image". Para ello se deben seguir los
-    “*pasos básicos de lectura*”, y luego agregar el siguiente código:
+    This the standard procedure for opening, reading and saving a SAR
+    image using PyRadar. In the remainder examples, we will omit these
+    steps and we will refer to them as "basic reading steps", from the
+    imports until the call to the function "read_image_from_band"
+    (inclusive). The following example shows how to use
+    "naive_equalize_image". We should follow the *basic reading steps*
+    and then add the following piece of code:
 
     .. include:: ../../examples/example_core2.py
         :literal:
 
-    Gdal es una librería para leer y escribir datos provenientes de rasters
-    geoespaciales, y está liberada bajo licencia MIT por la Open Source
-    Geospatial Foundation.
+    Gdal is a library to read and write geospatial raster data and it
+    distributed under MIT license by the Open Source Geospatial
+    Foundation.
 
 - ``filters``
 
-    En este módulo se encuentran los siguientes filtros de ruido speckle:
+    This module contains the speckle noise filters:
 
     - Frost
     - Kuan
     - Lee
-    - Lee Mejorado
+    - Improved Lee
 
-    Los mismos siguen las definiciones matemáticas de la sección filtros.
-    Además, se encuentran también las implementaciones de los filtros clásicos
-    de media y de mediana. Como PyRadar tiene entre sus objetivos seguir
-    expandiéndose y creciendo, este módulo puede ser extendido con nuevos
-    filtros.
+    They follow the mathematical models described in the filters
+    section.  Besides these, there are also implementations of the
+    classic mean and median filters. This module can be easily
+    expanded with new filters.
 
-    Como complemento a estos algoritmos, se desarrollaró una serie funciones
-    que verifican la consistencia de los algoritmos en tiempo de ejecución.
-    La finalidad de esto es que, al extender el módulo con nuevos filtros,
-    el desarrollador no necesite escribir nuevo código para verificar estas
-    condiciones en sus algoritmos para verificar consistencia.
+    Besides the algorithms, there are a series of functions that help
+    verify the correctness of the algorithms at run time. This should
+    simplify testing new filters.
 
-    A continuación se detallan las funciones del módulo:
+    Module functions:
 
-    - ``frost_filter(img, damping_factor, win_size)`` Esta función
-      implementa el filtro de Frost sobre una imagen img, tomando como
-      argumentos el damping_factor y el tamaño de ventana win_size. Si estos
-      argumentos no fueran especificados, se toma por defecto:
+    - ``frost_filter(img, damping_factor, win_size)`` implementation
+      of Frost filtering over the image img, taking as parameters the
+      damping_factor and the window size win_size. Default values:
 
         - damping_factor=2.0
         - win_size=3.
 
-    - ``kuan_filter(img, win_size, cu)`` Esta función aplica el filtro de Kuan
-      sobre una imagen img tomando como argumentos el tamaño de ventana win_size
-      y coeficiente de variación del ruido cu. De no ser especificados los
-      siguientes valores se toman por defecto: win_size=3 y cu=0.25
+    - ``kuan_filter(img, win_size, cu)`` apply the Kuan filter to an
+      image img, taking as parameters the window size win_size and the
+      noise variation rate cu. Default values: win_size=3 y cu=0.25
 
-    - lee_filter(img, win_size, cu) Esta función aplica el filtro de Lee sobre
-      una imagen img, tomando como argumentos el tamaño de ventana win_size y
-      coeficiente de variación del ruido cu. De no ser especificados, se toman
-      los mismos valores por defecto que en el filtro de Kuan.
+    - lee_filter(img, win_size, cu) apply the Lee filter to an image
+      img, taking as parameters as image img, taking as parameters the
+      window size win_size and the noise variation rate cu. Default
+      values: win_size=3 y cu=0.25
 
-    - lee_enhanced_filter(img, win_size, k, cu, cmax) Esta función aplica el
-      filtro de Lee Mejorado con los siguientes argumentos:
+    - lee_enhanced_filter(img, win_size, k, cu, cmax) applies the 
+      Improved Lee filter with the following parameters:
 
-        - la imagen img,
-        - el tamaño win_size (por defecto 3),
-        - k el factor de amortiguamiento (por defecto 1.0),
-        - coeficiente de variación del ruido cu (por defecto 0.523),
-        - coeficiente de variación máximo en la imagen cmax (por defecto 1.73).
+        - the image img,
+        - the window size win_size (default: 3),
+        - the dumping factor k (default: 1.0),
+        - image maximum variation coefficient cmax (default: 1.73).
 
-    - ``mean_filter(img, win_size)`` Esta función ejecuta un filtro de paso bajo
-          clásico, como lo es el filtro de media. Los argumentos que toma son
-          la imagen img y el tamaño de la ventana win_size. Por defecto win_size toma el valor de 3.
+    - ``mean_filter(img, win_size)`` applies a traditional lo pass
+      filter (the mean filter). It takes as parameters the image img
+      and the window size win_size. The default value of win_size
+      is 3.
 
-    - ``median_filter(img, win_size)`` Esta función ejecuta el segundo filtro
-      de paso bajo clásico que contiene el módulo: el filtro de mediana. Los
-      argumentos de este filtro son la imagen img y el tamaño de ventana
-      win_size, tomando por defecto 3 para este último.
+    - ``median_filter(img, win_size)`` applies another traditional lo
+      pass filter (the median filter). It takes as parameters the
+      image img and the window size win_size. The default value of
+      win_size is 3.
 
-    - Funciones desarrolladas para verificar consistencia de los filtros en tiempo de ejecución
+    - Test harness functions
 
 
-    - ``assert_window_size(win_size)`` Verifica que el tamaño de ventana sea
-      múltiplo de 3 y positivo. De no cumplirse la condición, levanta una excepción de Python.
+    - ``assert_window_size(win_size)`` verifies the windows size is a
+      multiple of 3 and positive, otherwise it raises a Python
+      exception.
 
-    - ``assert_indices_in_range(width, height, xleft, xright, yup, ydown)`` Verifica
-      que los índices de la ventana deslizante se encuentren dentro de los valores normales.
+    - ``assert_indices_in_range(width, height, xleft, xright, yup,
+      ydown)`` verifies the indices of the sliding window fall into
+      expected values.
 
-      Es decir, que siempre se cumpla lo siguiente: (0 <= xleft and xright <= width and 0 <= yup and ydown <= height)
+      That it, the following invariant should hold: (0 <= xleft and xright <= width and 0 <= yup and ydown <= height)
 
-      De no ser cierta la expresión booleana anterior, se levanta una excepción de Python.
+      If it does not hold, it raises a Python exception.
 
-    **Ejemplo de uso de los filtros:**
+    **Example usage for the filters:**
 
-    Para correr los algoritmos de los filtros antes mencionados se necesitan
-    ejecutar los "pasos básicos de lectura", para tener así la imagen img a usar en
-    la variable “image”.
+    After executing the "basic reading steps", the image to be used
+    for filtering should available in the variable “image”.
 
     .. include:: ../../examples/example_filtros.py
         :literal:
 
-- ``pyradar.utils.timer`` un pequeño timer para cronometrar el tiempo de ejecución de porciones de código Python
+- ``pyradar.utils.timer`` a small timer to profile Python execution time
 
-  Se desarrolló este pequeño módulo con el fin de cronometrar el "tiempo de pared"
-  de ejecución de algunas funciones. El tiempo de pared de ejecución es el tiempo
-  total que un cálculo permanece en ejecución. Se le llama de "pared" porque
-  dentro del sistema operativo la ejecución de un proceso también acarrea otra
-  operaciones básicas además de la algoritmia programada. Operaciones como
-  cambios de contexto del sistema operativo, carga y descarga de librerías,
-  volcados de datos a disco y otras operaciones agregan tiempo extra a la
-  medición. Si bien la medición no es de alta precisión, su valor es servir
-  como medición de referencia de tiempo de ejecución para realizar optimizaciones.
+  A small module to profile the "wall time" of the execution of some
+  functions.  Wall time is the time a particular function is
+  executing, and it includes Operating System overhead. Even though is
+  not very precise, it is useful as reference to measure the impact of
+  different optimizations.
 
-    Ejemplos de uso:
+    Example of use:
 
-    A diferencia de las demás utilidades antes mencionadas, esta utilidad la utilizamos dentro del código mismo.
+    This utility is used within the code itself.
 
     .. include:: ../../examples/example_timer.py
         :literal:
@@ -186,72 +177,66 @@ Entendiendo los módulos de PyRadar
 - ``pyradar.utils.sar_debugger``
 
 
-    El propósito de este módulo de PyRadar es agrupar funcionalidades y
-    herramientas para realizar tareas de debugging sobre algoritmos que manipulen
-    imágenes SAR. De esta forma, el módulo irá satisfaciendo las necesidades de
-    la comunidad con nuevos features. De momento sólo posee una función, take_snapshot().
+    This module groups debugging tools for algorithms that manipulate
+    SAR images. Over time, it should grow but currently it has only
+    one function, take_snapshot().
 
-    - ``takesnapshot(img)`` es una función que toma una fotografía instantánea
-      de la imagen img y la guarda en el disco. El propósito de esta función,
-      es poder exportar capturas de los algoritmos de clasificación a medida que
-      van evolucionando en el cómputo.
+    - ``takesnapshot(img)`` take a snapshot of the image img and saves
+      it to disk. It can be used to capture intermediate stages of the
+      classification algorithms.
 
-    Ejemplo de uso:
+    Example of use:
 
     .. include:: ../../examples/example_sar_debugger.py
         :literal:
 
-- ``pyradar.utils.system_info`` obtiene información del Sistema Operativo, Hardware y Software
+- ``pyradar.utils.system_info`` obtains information about the
+  Operating System, Hardware and Software
 
-  Se desarrolló un módulo que permite obtener información del Sistema Operativo
-  de manera simple y detallada. El objetivo de este módulo es que cuando algún
-  usuario o desarrollador tenga algún problema con la librería pyradar, éste
-  pueda comparar la información específica sobre su Sistema Operativo, Hardware
-  y Software, con el fin de descartar(o confirmar) la posibilidad de que su
-  problema provenga de estas fuentes.
+  This module allows for obtaining detailed Operating System
+  information in a simple way.  It is used for error reporting, to
+  diagnose Operating System-related issues.
 
-  Ejemplo de uso:
+  Example of use:
 
   .. include:: ../../examples/example_system_info.py
     :literal:
 
-- ``pyradar.utils.statutils`` utilidades estadísticas
+- ``pyradar.utils.statutils`` statistical utilities
 
-    Este módulo provee algunas funciones estadísticas que pueden llegar a ser
-    de utilidad para la comunidad de procesamiento de imágenes, incluso más
-    allá del contexto específico de la librería. Al igual que el módulo Sar
-    Debugger, su objetivo también es ser extendido por la comunidad a medida
-    que la necesidad lo demande.
+    This module contains statistical utilities of general interest to
+    the image processing community. In the same way as SAR Debugger,
+    this module can be easily extended as needed.
 
-    - ``compute_cfs()`` Recibiendo como argumento un histograma generado con la
-      librería numpy, esta función genera una tabla con todas las frecuencias
-      acumuladas.
+    - ``compute_cfs()`` takes as parameter a histogram produced by
+      numpy, it produces a table with all the accumulated frequencies.
 
-    - ``calculate_pdf_for_pixel()`` Calcula la probabilidad de que un valor en
-      particular aparezca en la imagen, donde la probabilidad está dada como:
-      la cantidad de ocurrencias efectivas del valor * cantidad total de elementos.
+    - ``calculate_pdf_for_pixel()`` compute the probability of a
+      particular value appearing in the image, where the probability
+      is given by the amount of actual times the value appears * total
+      number of elements.
 
-    - ``calculate_cdf_for_pixel()`` Calcula el valor de un pixel en la función
-      distribución acumulada.
+    - ``calculate_cdf_for_pixel()`` compute the value of a pixel in
+      the cumulative distribution function.
 
-    - ````compute_cdfs()`` Esta función computa todas la probabilidades de la
-      distribución de frecuencia acumulada de cada valor en la imagen.
+    - ````compute_cdfs()`` computes the cumulative distribution
+      frequency for each value in the image.
 
-    Ejemplos de uso
+    Example of use
 
     .. include:: ../../examples/example_statutils.py
         :literal:
 
 - ``pyradar.classifiers.kmeans``
 
-  Ejemplos de uso
+  Example of use
 
   .. include:: ../../examples/example_kmeans.py
         :literal:
 
 - ``pyradar.classifiers.isodata``
 
-  Ejemplos de uso
+  Example of use
 
   .. include:: ../../examples/example_isodata.py
         :literal:
@@ -265,7 +250,7 @@ Entendiendo los módulos de PyRadar
 
 - ``pyradar.simulate.image_simulator``
 
-  Ejemplos de uso
+  Example of use
 
   .. include:: ../../examples/example_simulate.py
     :literal:

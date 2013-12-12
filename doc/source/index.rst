@@ -18,6 +18,7 @@ Contents:
 
     install.rst
     tutorial.rst
+    tutorial_es.rst
     examples.rst
     api/modules.rst
 
