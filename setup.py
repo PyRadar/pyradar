@@ -49,7 +49,7 @@ import pyradar
 #===============================================================================
 
 PYPI_REQUIRE = [
-    "PIL",
+    "pillow",
     "numpy",
     "matplotlib",
     "scipy"
