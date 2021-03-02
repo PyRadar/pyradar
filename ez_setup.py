@@ -103,7 +103,7 @@ def use_setuptools(
         return do_download()       
     try:
         pkg_resources.require("setuptools>=" + version); return
-    except pkg_resources.VersionConflict, e:
+    except pkg_resources.VersionConflict as e:
         if was_imported:
             print >> sys.stderr, (
             "The required version of setuptools (>=%s) is not available, and\n"
@@ -238,8 +238,8 @@ def main(argv, version=DEFAULT_VERSION):
             from setuptools.command.easy_install import main
             main(argv)
         else:
-            print "Setuptools version", version, "or greater has been installed."
-            print '(Run "ez_setup.py -U setuptools" to reinstall or upgrade.)'
+            print("Setuptools version", version, "or greater has been installed.")
+            print('(Run "ez_setup.py -U setuptools" to reinstall or upgrade.)')
 
 def update_md5(filenames):
     """Update our built-in md5 registry"""
@@ -262,7 +262,7 @@ def update_md5(filenames):
 
     match = re.search("\nmd5_data = {\n([^}]+)}", src)
     if not match:
-        print >> sys.stderr, "Internal error!"
+        print("Internal error!", file=sys.stderr)
         sys.exit(2)
 
     src = src[:match.start(1)] + repl + src[match.end(1):]
