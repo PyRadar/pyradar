@@ -97,14 +97,14 @@ def frost_filter(img, damping_factor=2.0, win_size=3):
     N, M = img.shape
     win_offset = win_size / 2
 
-    for i in xrange(0, N):
+    for i in range(0, N):
         xleft = i - win_offset
         xright = i + win_offset
         if xleft < 0:
             xleft = 0
         if xright >= N:
             xright = N - 1
-        for j in xrange(0, M):
+        for j in range(0, M):
             yup = j - win_offset
             ydown = j + win_offset
             if yup < 0:
