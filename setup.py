@@ -82,9 +82,9 @@ def validate_modules(requires):
 
 def print_not_found(not_found, msg):
     limits = "=" * max(map(len, not_found))
-    print "\n{}\n{}\n{}\n{}\n".format(msg, limits,
+    print("\n{}\n{}\n{}\n{}\n".format(msg, limits,
                                         "\n".join(not_found),
-                                        limits)
+                                        limits))
 
 not_found = validate_modules(MANUAL_REQUIRE)
 if not_found:
