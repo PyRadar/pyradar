@@ -5,7 +5,7 @@ numpy==1.5.1
 matplotlib==1.0.1
 
 
-ipython==0.11
+ipython==7.16.3
 ipdb==0.6
 readline==6.2.1
 
