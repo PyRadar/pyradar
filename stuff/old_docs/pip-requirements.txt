@@ -1,6 +1,6 @@
 # Setup instructions and stuff related here
 PIL==1.1.7
-numpy==1.5.1
+numpy==1.21.0
 
 matplotlib==1.0.1
 
